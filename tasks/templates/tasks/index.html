@@ -1,0 +1,52 @@
+{% extends 'tasks/layout.html' %}
+
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %}
+
+    <div id="main" class="main ui">
+        <h1 class="ui dividing centered header">Django Todo</h1>
+    
+        <div class="content">
+
+            <div class="ui three column centered grid">
+
+                <div class="column">
+                    {% for todo in all_todos %}
+                    <div class="ui centered card">
+                        <div class="content">
+                            <div class="header">{{ todo.task|upper }}</div>
+                            <div class="meta">{{ todo.description }}</div>
+                            <div class="meta">{{ todo.date_created }}</div>
+                            <hr>
+                            <a href="{% url 'edit' todo.pk %}"><i class="edit icon"></i></a>
+                            <a href="{% url 'delete' todo.pk %}"><i class="trash icon"></i></a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="ui centered card">
+                        <div class="content">
+                            <div class="center aligned description">
+                               <h2>You have not Todos</h2> 
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="ui basic content center aligned segment">
+                        <a href="{% url 'create' %}">
+                            <button class="ui basic button icon">
+                                <i class="plus icon"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+{% endblock %}

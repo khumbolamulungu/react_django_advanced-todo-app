@@ -1,0 +1,43 @@
+{% extends 'tasks/layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Delete {% endblock %}
+
+
+{% block content %}
+
+    <div id="main" class="main ui">
+        <h1 class="ui dividing centered header">Django Todo</h1>
+    
+        <div class="content">
+
+            <div class="ui three column centered grid">
+
+                <div class="column">
+                    <div class="ui centered card">
+
+                        <div class="content">
+                            <div class="header">{{ todo.task|upper }}?</div>
+                        </div>
+
+                        <form class="ui form" action="" method="post">
+                            {% csrf_token %}
+            
+                            <div class="ui two bottom attached buttons">
+                                <button class="ui basic blue button">Confirm</button>
+                                <a href="{% url 'home' %}" class="ui basic red button">Cancel</a>
+                            </div>
+                        </form>
+                        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+{% endblock %}
